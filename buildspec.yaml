@@ -1,0 +1,27 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.9
+  pre_build:
+    commands:
+      - echo "instalar algo"
+      - echo start lambda function build ${SourceFolder}
+      - file=${SourceFolder}/app.py;
+      - artifact=${file};
+  pre_build:
+    commands: 
+      - echo "estamos en la fase previa a la construcción"
+  build:
+    commands:
+        - echo "estamos en el bloque de construcción"
+        - echo "vamos a ejecutar algunos tests"
+        - grep -Fq "Enhorabuena" app.py
+  post_build:
+    commands:
+        - echo "estamos en la fase de postconstrucción"
+artifacts:
+  files:
+    - $artifact
+  base-directory: my-lambda
