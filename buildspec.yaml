@@ -14,10 +14,10 @@ phases:
       - echo "vamos a ejecutar algunos tests"
       - pwd
       - ls
-      - cat app.py
+      - cat lambda_function.py
   post_build:
     commands:
       - echo "estamos en la fase de postconstrucción"
 artifacts:
   files:
-    - 'app.py'
+    - 'lambda_function.py'
