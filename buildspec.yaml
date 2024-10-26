@@ -13,7 +13,7 @@ phases:
       - echo "vamos a ejecutar algunos tests"
       - pwd
       - ls
-      - grep -Fq "Enhorabuena" app.py
+      - cat app.py
   post_build:
     commands:
       - echo "estamos en la fase de postconstrucción"
