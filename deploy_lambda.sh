@@ -1,7 +1,7 @@
 #!/bin/bash
-echo "Listar artefacto de CodeDeploy"
-pwd
-ls
-
-#aws s3 cp /tmp/lamda/Test.zip s3://your-bucket/lambda_functions/Test-Lambda/Test.zip
-#aws lambda update-function-code --function-name TestLambda --s3-bucket your-bucket --s3-key lambda_functions/Test-Lambda/Test.zip
+echo 'Inicio proceso de empaquetamiento...'
+zip file_lambda lambda_function.py
+echo 'Subir codigo a s3'
+aws s3 cp file_lambda.zip s3://lambda-cicd-brayan/cicd-codepipeline/SourceArti/file_lambda.zip
+echo 'Actualizando lambda...'
+aws lambda update-function-code --function-name aws-cicd-lambda --s3-bucket lambda-cicd-brayan --s3-key cicd-codepipeline/SourceArti/file_lambda.zip --region us-east-1
